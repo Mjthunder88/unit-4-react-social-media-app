@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+
 import axios from 'axios'
 import AuthContext from "../store/authContext";
 
@@ -12,7 +13,7 @@ const Auth = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const url = 'https://socialmtn.devmountain.com'
+    const url = 'http://localhost:3002'
 
     if (register) {
         axios.post(`${url}/register`, {
@@ -77,7 +78,7 @@ const Auth = () => {
           placeholder="Enter Password"
           onChange={passwordHandler}
         />
-        <button className="form-btn">{register ? "Sign Up" : "Login"}?</button>
+        <button className="form-btn">{register ? "Sign Up" : "Login"}</button>
       </form>
       <button className="form-btn" onClick={changeBtnHandler}>
         Need to {register ? "Login" : "Sign Up"}?
