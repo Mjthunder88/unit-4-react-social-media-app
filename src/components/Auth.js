@@ -16,7 +16,7 @@ const Auth = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const url = 'http://localhost:3002'
+    const url = 'http://localhost:3002'  //! HAD TO ALSO CHANGE IT IN PACKAGE.JSON in PROXY section
 
     if (register) {
         axios.post(`${url}/register`, {
@@ -28,6 +28,7 @@ const Auth = () => {
             authCtx.login(res.data.token, res.data.exp, res.data.userId)
         })
         .catch((error) => {
+          toggleModal()
           console.log(error)
         })
     } else {
@@ -41,6 +42,7 @@ const Auth = () => {
         })
         .catch((error) => {
             console.log(error)
+            
         })
         
     }
@@ -67,8 +69,8 @@ const Auth = () => {
   
 
   const toggleModal = () => {
-      setModal(!modal)
-  }
+    setModal(!modal)
+}
 
   if(modal) {
       document.body.classList.add('active-modal')
@@ -94,7 +96,7 @@ const Auth = () => {
           placeholder="Enter Password"
           onChange={passwordHandler}
         />
-        <button className="form-btn" onClick={toggleModal}>{register ? "Sign Up" : "Login"}</button>
+        <button className="form-btn">{register ? "Sign Up" : "Login"}</button>
       </form>
       <button className="form-btn" onClick={changeBtnHandler}>
         Need to {register ? "Login" : "Sign Up"}?
