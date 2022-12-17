@@ -16,7 +16,7 @@ const Auth = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const url = 'http://localhost:3002'  //! HAD TO ALSO CHANGE IT IN PACKAGE.JSON in PROXY section
+    const url = 'http://localhost:3002'  //! HAD TO ALSO CHANGE IT IN PACKAGE.JSON in PROXY section // and run front end on diff port
 
     if (register) {
         axios.post(`${url}/register`, {
