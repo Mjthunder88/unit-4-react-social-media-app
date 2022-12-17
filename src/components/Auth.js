@@ -23,9 +23,11 @@ const Auth = () => {
         .then((res) => {
             console.log(res.data)
             authCtx.login(res.data.token, res.data.exp, res.data.userId)
-
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {
+          console.log(error)
+          alert('There was an error creating your account')
+        })
     } else {
         axios.post(`${url}/login`, {
             username,

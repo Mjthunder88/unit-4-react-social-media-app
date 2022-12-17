@@ -1,6 +1,6 @@
 const {User} = require('../models/user')
 const {Post} = require('../models/post')
-
+//? attributes is like this section in a query = SELECT "username" FROM User .... 
 module.exports = {
     getAllPosts: async (req, res) => {
         try {
@@ -9,13 +9,14 @@ module.exports = {
                 include: [{
                     model: User,
                     required: true,
-                    attributes: [`username`]                //? attributes is like this section in a query = SELECT "username" FROM User .... 
+                    attributes: [`username`]
                 }]
             })
             res.status(200).send(posts)
         } catch (error) {
-            console.log(error, 'Error in controller/ get all posts')
-            res.status(400).send('error when getting all posts')
+            console.log('ERROR IN getAllPosts')
+            console.log(error)
+            res.sendStatus(400)
         }
     },
     getCurrentUserPosts: async (req, res) => {
